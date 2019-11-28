@@ -14,14 +14,19 @@ class ContactFixtures extends Fixture implements DependentFixtureInterface{
      *
      * @param ObjectManager $manager
      */
+
+    CONST ROLES = ['Direction', 'RH', 'Développement', 'Communication'];
+
     public function load(ObjectManager $manager) {
-        for ($i = 0; $i < 10; $i++) {
+        $j=0;
+        foreach(self::ROLES as $role )  {
             $contact = new Contact();
-            $contact->setNom("Dubois".$i);
-            $contact->setPrenom("Pierre".$i);
-            $contact->setMail("Pierre".$i."dubois".$i."@orange.com");
-            $contact->setMessage("Bonjour je suis un homme".$i);
-            $contact->setDepartements($this->getReference(DepartementsFixtures::ROLES[\rand(0,3)]));
+            $contact->setNom("Dubois".$j);
+            $contact->setPrenom("Pierre".$j);
+            $contact->setMail("Pierre".$j."dubois".$j."@tamere.com");
+            $contact->setMessage("Bonjour je suis un homme".$j);
+            $contact->setDepartements([$role]);
+            $j++;
             $manager->persist($contact);
         }
         $manager->flush();

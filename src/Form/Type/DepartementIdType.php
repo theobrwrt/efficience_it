@@ -13,13 +13,14 @@ class DepartementIdType extends AbstractType
     {
         $resolver->setDefaults([
             'choices' => [
-                "Développeur" => 3,
-                "Communication" => 4,
-                "Ressources Humaines" => 2,
-                "Direction" => 1
+                'Développeur' => 'Développeur',
+                'Communication' => 'Communication',
+                'Ressources Humaines' =>'Ressources Humaines',
+                'Direction' => 'Direction'
+
             ],
-            'multiple' => false,
-            'expanded' => false,
+            'multiple' => true,
+            'expanded' => true,
         ]);
     }
 

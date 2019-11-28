@@ -44,26 +44,25 @@ class Contact
     private $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Departements")
-     * @Assert\Unique
+     * @ORM\Column(type="array")
      *
      */
-    private $departements;
+    private $departements = [];
 
     /**
      * @return mixed
      */
-    public function getDepartements(): ?Departements
+    public function getDepartements(): array
+
     {
-        return $this->departements;
+        return  array_unique($this->departements);
     }
 
-    /**
-     * @param mixed $departements
-     */
-    public function setDepartements($departements): void
+
+    public function setDepartements(array $departements): self
     {
         $this->departements = $departements;
+        return $this;
     }
 
 
