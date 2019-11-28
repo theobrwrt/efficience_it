@@ -23,7 +23,7 @@ class ContactFixtures extends Fixture implements DependentFixtureInterface{
             $contact = new Contact();
             $contact->setNom("Dubois".$j);
             $contact->setPrenom("Pierre".$j);
-            $contact->setMail("Pierre".$j."dubois".$j."@tamere.com");
+            $contact->setMail("Pierre".$j."dubois".$j."@orange.com");
             $contact->setMessage("Bonjour je suis un homme".$j);
             $contact->setDepartements([$role]);
             $j++;

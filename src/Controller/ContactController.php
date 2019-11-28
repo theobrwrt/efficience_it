@@ -63,7 +63,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/{id}/edit", name="contact_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Contact $contact, Swift_Mailer $mailer): Response
+    public function edit(Request $request, Contact $contact): Response
     {
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
@@ -71,13 +71,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $message = (new \Swift_Message())
-                ->setSubject('Hello There')
-                ->setFrom(['send@example.com'=>'John'])
-                ->setTo([$contact->getMail()=>$contact->getDepartements()])
-                ->setBody('une nouvelle personne est arrivé dans notre departement');
 
-            $mailer->send($message);
 
             return $this->redirectToRoute('contact_index');
         }
