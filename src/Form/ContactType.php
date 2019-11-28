@@ -21,7 +21,6 @@ class ContactType extends AbstractType
             ->add('mail')
             ->add('message',TextareaType::class)
             ->add('departements',DepartementIdType::class)
-
         ;
     }
 

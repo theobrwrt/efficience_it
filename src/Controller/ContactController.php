@@ -30,7 +30,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="contact_new", methods={"GET","POST"})
      */
-    public function new(Request $request, DepartementsEntity $departements = null): Response
+    public function new(Request $request): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -46,8 +46,7 @@ class ContactController extends AbstractController
 
         return $this->render('contact/new.html.twig', [
             'contact' => $contact,
-            'form' => $form->createView(),
-            'Départements' => $departements
+            'form' => $form->createView()
         ]);
     }
 
@@ -64,27 +63,13 @@ class ContactController extends AbstractController
     /**
      * @Route("/{id}/edit", name="contact_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Contact $contact, Swift_Mailer $mailer): Response
+    public function edit(Request $request, Contact $contact): Response
     {
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            $message = (new \Swift_Message('Hello Email'))
-                ->setFrom('send@example.com')
-                ->setTo($contact->getDepartements())
-                ->setBody(
-                    $this->renderView(
-                    // templates/emails/registration.html.twig
-                        'emails/modification.html.twig',
-                        ['text' =>  $contact->getDepartements() ]
-                    ),
-                    'text/html'
-                );
-
-            $mailer->send($message);
 
             return $this->redirectToRoute('contact_index');
         }

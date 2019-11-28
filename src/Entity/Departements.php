@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DepartementsRepository")
@@ -27,10 +29,7 @@ class Departements
      */
     private $dep_mail;
 
-    /**
-     * @ORM\OneToMany(targetEntity="\App\Entity\Contact", mappedBy="departements", cascade={"persist","remove"})
-     */
-    private $contacts;
+
 
     public function getId(): ?int
     {
@@ -61,21 +60,6 @@ class Departements
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getContacts()
-    {
-        return $this->contacts;
-    }
-
-    /**
-     * @param mixed $contacts
-     */
-    public function setContacts($contacts): void
-    {
-        $this->contacts = $contacts;
-    }
 
 
 }

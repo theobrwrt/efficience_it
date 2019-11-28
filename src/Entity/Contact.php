@@ -44,9 +44,29 @@ class Contact
     private $message;
 
     /**
-     * @ORM\ManyToOne(inversedBy="departements", targetEntity="\App\Entity\Contact")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Departements")
+     * @Assert\Unique
+     *
      */
     private $departements;
+
+    /**
+     * @return mixed
+     */
+    public function getDepartements(): ?Departements
+    {
+        return $this->departements;
+    }
+
+    /**
+     * @param mixed $departements
+     */
+    public function setDepartements($departements): void
+    {
+        $this->departements = $departements;
+    }
+
+
 
     public function getId(): ?int
     {
@@ -100,23 +120,5 @@ class Contact
 
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getDepartements()
-    {
-        return $this->departements;
-    }
-
-    /**
-     * @param mixed $departements
-     */
-    public function setDepartements($departements): void
-    {
-        $this->departements = $departements;
-    }
-
-
 
 }

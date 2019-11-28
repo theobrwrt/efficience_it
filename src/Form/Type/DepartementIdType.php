@@ -17,7 +17,6 @@ class DepartementIdType extends AbstractType
                 "Communication" => 4,
                 "Ressources Humaines" => 2,
                 "Direction" => 1
-
             ],
             'multiple' => false,
             'expanded' => false,
