@@ -1,0 +1,34 @@
+{% set current_path = app.request.get('_route') %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Efficient IT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('contact_index') }}">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('departements_index') }}">Départements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('contact_new') }}">Fiche contact</a>
+            </li>
+            <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
+            <li class="nav-item dropdown">
+                <!-- <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Profile
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                     <a class="dropdown-item" href="#">Preferences</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Logout</a>
+                 </div>-->
+            </li>
+        </ul>
+    </div>
+</nav>

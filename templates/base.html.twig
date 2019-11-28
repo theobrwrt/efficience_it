@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{{ include('navbar.html.twig') }}
+<div class="container">
+
+    {% block body %}{% endblock %}
+
+    {% block footer %}
+        <footer class="app-footer">
+            <div class="container">
+                <!--Copyright-->
+                <div>
+                    <div class="container-fluid text-center">
+                        Copyright &copy; {{ "now"|date("Y") }} <a
+                                href="https://www.linkedin.com/in/théo-bruwaert-b9250b17a/" target="_blank"><b>BRUWAERT Théo</b></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
+
+</div>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>
